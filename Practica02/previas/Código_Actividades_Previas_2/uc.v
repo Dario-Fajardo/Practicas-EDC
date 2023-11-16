@@ -2,7 +2,7 @@ module uc #(parameter retardo = 1) (input wire q0, start, clk, output wire Carga
 
 reg [2:0] state, nextstate; //Variables para los estados actual y siguiente
 
-//Codificación de los estados
+//Codificaciï¿½n de los estados
 parameter S0 = 3'b000;  //declaracion de constantes que representan los estados
 parameter S1 = 3'b001;
 parameter S2 = 3'b010;
@@ -18,9 +18,9 @@ always @ (posedge clk, posedge start)
   else
     state <= #retardo nextstate;
 
-//Función de transición
+//Funciï¿½n de transiciï¿½n
 always @(*)
-  case (state)            //Aqui las asignaciones podrían ser bloqueantes, ya que modelamos una función combinacional
+  case (state)            //Aqui las asignaciones podrï¿½an ser bloqueantes, ya que modelamos una funciï¿½n combinacional
     S0: nextstate <= S1;
     S1: nextstate <= S2;
     S2: nextstate <= S3;
@@ -31,7 +31,7 @@ always @(*)
     default: nextstate <= S0;
   endcase
 
-// Función de Salida
+// Funciï¿½n de Salida
 assign CargaQ = (state == S0)? 1 : 0; //a 1 si el estado es S0
 assign DesplazaQ = ((state == S2)|(state == S4))? 1:0;
 assign ResetA = ((state == S0))? 1 : 0;
