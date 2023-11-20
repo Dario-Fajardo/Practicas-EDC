@@ -12,5 +12,3 @@ module memprog(output wire [15:0] Datum,    // Dato que se lee de memoria
   end
   assign Datum = Mem[Address];
 endmodule
-
-
