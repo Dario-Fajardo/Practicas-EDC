@@ -19,7 +19,7 @@ programa: $(files)
 	@echo "======================================================"
 	@echo "chambeando..."
 	@echo "======================================================"
-	@$(COMPILATOR) -o uc.vvp $(files)
+	@$(COMPILATOR) -o microc.vvp $(files)
 
 ######################################
 .PHONY: clean

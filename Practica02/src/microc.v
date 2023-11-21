@@ -14,12 +14,12 @@ module microc(output wire [5:0] Opcode, output wire zero, input wire clk, reset,
   assign WA3 = instruccion[3:0]; // Los 4 bits menos significativos de la instrucción son la dirección del registro de escritura
   assign inm = instruccion[11:4]; // Bits de la instruccion que representan un dato inmediato
 
-  mux2 #(10) mux_pc (nuevo_PC, dir_salto, ,s_inc); // Mux para la selección de la dirección de PC
+  mux2 #(10) mux_pc (nuevo_PC, dir_salto, sum_out, s_inc); // Mux para la selección de la dirección de PC
   registro #(10) pc (PC_actual, clk, reset, nuevo_PC); // Registro para el PC
-  sum sum1 (sum_out, PC_actual, 10'b1); // Sumador para la siguiente dirección de PC
+  sum sum1 (sum_out, PC_actual, 10'b0000000001); // Sumador para la siguiente dirección de PC
   memprog memprog1 (instruccion, clk, PC_actual); // Memoria de programa
   mux2 #(4) mux3 (mux3_out, RA1, WA3, s_inm); // Mux para la selección de la dirección de registro
-  regfile regfile1 (RD1, RD2, clk, we3, RA1, RA2, WA3, WD3); // Banco de registros
+  regfile regfile1 (RD1, RD2, clk, we, RA1, RA2, WA3, WD3); // Banco de registros
   mux2 mux_alu (mux_alu_out, RD2, inm, s_inm); // Mux para la selección de la segunda entrada de la ALU
   alu alu1 (WD3, zalu, RD1, mux_alu_out, ALUOp); // ALU
   ffd ffz(clk, reset, zalu, wez, zero); // Biestable con el flag de cero
