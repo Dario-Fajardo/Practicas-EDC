@@ -1,3 +1,6 @@
+// Darío Fajardo Álvarez
+// José Miguel Díaz González
+
 module microc(output wire [5:0] Opcode, output wire zero, input wire clk, reset, s_inc, s_inm, we, wez, input wire [2:0] ALUOp);
 //Microcontrolador sin memoria de datos de un solo ciclo
   wire [15:0] instruccion; // Instrucción que se lee de memoria
@@ -19,8 +22,8 @@ module microc(output wire [5:0] Opcode, output wire zero, input wire clk, reset,
   sum sum1 (sum_out, PC_actual, 10'b0000000001); // Sumador para la siguiente dirección de PC
   memprog memprog1 (instruccion, clk, PC_actual); // Memoria de programa
   mux2 #(4) mux3 (mux3_out, RA1, WA3, s_inm); // Mux para la selección de la dirección de registro
-  regfile regfile1 (RD1, RD2, clk, we, RA1, RA2, WA3, WD3); // Banco de registros
-  mux2 mux_alu (mux_alu_out, RD2, inm, s_inm); // Mux para la selección de la segunda entrada de la ALU
+  regfile regfile1 (RD1, RD2, clk, we, mux3_out, RA2, WA3, WD3); // Banco de registros
+  mux2 #(8) mux_alu (mux_alu_out, RD2, inm, s_inm); // Mux para la selección de la segunda entrada de la ALU
   alu alu1 (WD3, zalu, RD1, mux_alu_out, ALUOp); // ALU
   ffd ffz(clk, reset, zalu, wez, zero); // Biestable con el flag de cero
 endmodule

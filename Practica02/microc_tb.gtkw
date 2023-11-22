@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Wed Nov 22 10:51:33 2023
+[*]
+[dumpfile] "/home/dario/Desktop/uni/edc/Practica02/microc_tb.vcd"
+[dumpfile_mtime] "Wed Nov 22 10:38:00 2023"
+[dumpfile_size] 3929
+[savefile] "/home/dario/Desktop/uni/edc/Practica02/microc_tb.gtkw"
+[timestart] 0
+[size] 1900 982
+[pos] -1 -1
+*-14.252099 63600 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] microc_tb.
+[sst_width] 273
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+microc_tb.test_clk
+microc_tb.test_reset
+@200
+-
+@28
+microc_tb.test_Opcode[5:0]
+microc_tb.microc1.instruccion[15:0]
+@200
+-
+@24
+microc_tb.microc1.PC_actual[9:0]
+microc_tb.microc1.nuevo_PC[9:0]
+@200
+-
+@28
+microc_tb.test_s_inc
+microc_tb.test_s_inm
+microc_tb.test_we
+microc_tb.test_wez
+microc_tb.test_zero
+microc_tb.test_ALUOp[2:0]
+[pattern_trace] 1
+[pattern_trace] 0
